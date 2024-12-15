@@ -49,6 +49,7 @@ test('Add vacancies', async ({ page }) => {
     await page.getByRole('textbox').nth(4).fill('10');
     await page.getByRole('button', { name: 'Save' }).click();
     await page.getByRole('link', { name: 'Vacancies' }).click();
+    // await expect(page.getByText('Success', { exact: true })).toBeVisible();
     await expect(page.getByRole('cell', { name: vacancyName_full })).toBeVisible()
 
 });
@@ -110,13 +111,13 @@ test('Reject Candidate', async ({ page }) => {
 
 });
 
-test.fixme('Delete Vacancy', async ({ page }) => {
+test('Delete Vacancy', async ({ page }) => {
 
     await page.locator('div:nth-child(2) > .oxd-input-group > div:nth-child(2) > .oxd-select-wrapper > .oxd-select-text > .oxd-select-text--after > .oxd-icon').click();
     await page.getByRole('option', { name: vacancyName_full }).click();
     await page.getByRole('button', { name: 'Search' }).click();
-    await page.getByRole('button', { name: '' }).click();
+    await page.getByRole('button', { name: '' }).first().click();
     await page.getByRole('button', { name: ' Yes, Delete' }).click();
-    await page.getByText('Success', { exact: true }).click();
+    await expect(page.getByText('Success', { exact: true })).toBeVisible();
 
 });
