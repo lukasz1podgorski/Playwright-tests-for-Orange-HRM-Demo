@@ -36,7 +36,7 @@ test.beforeEach('login', async ({ page }) => {
 });
 
 
-test('Add new employee and assign supervisor', async ({ page }) => {
+test('Add new employee', async ({ page }) => {
 
     await page.getByRole('link', { name: 'PIM' }).click();
     await page.getByRole('link', { name: 'Add Employee' }).click();
