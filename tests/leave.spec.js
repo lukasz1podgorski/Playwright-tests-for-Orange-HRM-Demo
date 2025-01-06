@@ -40,7 +40,9 @@ test('Apply for leave', async ({ page }) => {
     await page.locator('textarea').click();
     await page.locator('textarea').fill('Vacation');
     await page.getByRole('button', { name: 'Apply' }).click();
-    await expect (page.getByText('Warning')).toBeVisible();
+    await expect.soft(page.getByText('Warning')).toBeVisible();
+    // soft assertion due to warning being thrown in case user already applied for leave,
+    // if the records on demo site are purged, the assertion would be "Success" pop-up instead
 
 })
 
